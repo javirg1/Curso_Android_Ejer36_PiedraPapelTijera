@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Piedra, papel, tijera</string>
+    <string name="app_title">piedra, papel, tijera</string>
+    <string name="tv_cargando">Cargando...</string>
+    <string name="tv_instrucciones">En este juego conseguirás 3 puntos si ganas la partida y 1 punto si empatas. Cada vez que pierdas, se sumará un fallo. Al tercer fallo terminará la partida</string>
+    <string name="tv_piedra">Piedra</string>
+    <string name="tv_papel">Papel</string>
+    <string name="tv_tijera">Tijera</string>
+    <string name="tv_record">Record actual:</string>
+    <string name="tv_puntos_record">%d puntos</string>
+    <string name="btn_publi">Visitanos!!</string>
+    <string name="tv_fallos">Ya has fallado %d veces</string>
+    <string name="tv_puntos_acumulados">Llevas %d puntos en esta partida</string>
+    <string name="tv_nuevo_record">%d ¡¡nuevo record!!</string>
+    <string name="tv_resultado">%s</string>
+    <string name="tv_elige">Elige piedra, papel o tijera</string>
+
+
+</resources>
