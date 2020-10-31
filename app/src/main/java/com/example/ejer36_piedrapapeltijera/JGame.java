@@ -4,7 +4,10 @@ import java.util.Random;
 
 public class JGame {
 
-    //Atributos
+    /**********************************************************************************************
+    Atributos
+    **********************************************************************************************/
+
     private final String TAG = "Jgame class";
     private int num_aleatorio;
     private int fallos;
@@ -12,9 +15,11 @@ public class JGame {
     private int record_puntos;
     private String imagenFile;
     private String resultado;
+    private String sonido;
 
-
-    //Propiedades
+    /**********************************************************************************************
+     Propiedades
+     **********************************************************************************************/
 
     public String getImagenAleatoria() {
         return imagenFile;
@@ -32,7 +37,7 @@ public class JGame {
         return resultado;
     }
 
-    public int getRecord(){
+    public int getRecord() {
         return record_puntos;
     }
 
@@ -40,10 +45,13 @@ public class JGame {
         record_puntos = valor;
     }
 
+    /**********************************************************************************************
+     Funciones
+     **********************************************************************************************/
 
-    //Funciones
-
-    // Función para generar jugada del teléfono
+    // --------------------------------------------------------------------------------------------
+    // jugadorAleatorio() - Número aleatorio para la jugada de la app
+    // --------------------------------------------------------------------------------------------
 
     public String jugadorAleatorio() {
         // Genero un número aleatorio entre 0 y 2
@@ -64,39 +72,41 @@ public class JGame {
         return imagenFile;
     }
 
-    // Función que compara la jugada del usuario con la aleatoria
+    // --------------------------------------------------------------------------------------------
+    // comparaJugada() - Compara la jugada del usuario con la de la app
+    // --------------------------------------------------------------------------------------------
 
     public int comparaJugada(int eleccion) {
+
+        // 0 - Piedra (rock)
+        // 1 - Papel (paper)
+        // 2 - Tijera (tijera)
+
+        // Gestionamos el empate
         if (eleccion == num_aleatorio) {
-            // empate
             puntosAcumulados = puntosAcumulados + 1;
             resultado = "Empate";
+        // Si no hay empate, gestionamos quién gana o pierde
         } else {
             switch (eleccion) {
-                case 0: // piedra
-                    if (num_aleatorio == 1) { //papel
-                        // pierde usuario
+                case 0:
+                    if (num_aleatorio == 1) {
                         pierdeUsuario();
-                    } else { //tijera
-                        // gana usuario
+                    } else {
                         ganaUsuario();
                     }
                     break;
-                case 1: //papel
-                    if (num_aleatorio == 0) { //piedra
-                        // gana usuario
+                case 1:
+                    if (num_aleatorio == 0) {
                         ganaUsuario();
                     } else {
-                        // pierde usuario
                         pierdeUsuario();
                     }
                     break;
-                case 2: //tijera
-                    if (num_aleatorio == 0) { //piedra
-                        // pierde usuario
+                case 2:
+                    if (num_aleatorio == 0) {
                         pierdeUsuario();
                     } else {
-                        // gana usuario
                         ganaUsuario();
                     }
                     break;
@@ -105,8 +115,9 @@ public class JGame {
         return puntosAcumulados;
     }
 
-
-    // Función gana usuario
+    // --------------------------------------------------------------------------------------------
+    // ganaUsuario() - Gestionamos que sucede cuando el usuario gana la jugada
+    // --------------------------------------------------------------------------------------------
 
     public int ganaUsuario() {
         puntosAcumulados = puntosAcumulados + 3;
@@ -114,7 +125,9 @@ public class JGame {
         return puntosAcumulados;
     }
 
-    // Función pierde usuario
+    // --------------------------------------------------------------------------------------------
+    // pierdeUsuario() - Gestionamos que sucede cuando el usuario pierde la jugada
+    // --------------------------------------------------------------------------------------------
 
     public int pierdeUsuario() {
         fallos++;
@@ -122,22 +135,26 @@ public class JGame {
         return fallos;
     }
 
-    // Función nuevo record
+    // --------------------------------------------------------------------------------------------
+    // nuevoRecord() - Comprobamos si hay nuevo record cuando termina la partida
+    // --------------------------------------------------------------------------------------------
 
-    public boolean nuevoRecord(){
-        if (puntosAcumulados>record_puntos){
-            record_puntos=puntosAcumulados;
+    public boolean nuevoRecord() {
+        if (puntosAcumulados > record_puntos) {
+            record_puntos = puntosAcumulados;
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    // Función que reinicia contador de puntos y falos de la partida
+    // --------------------------------------------------------------------------------------------
+    // iniciaContadores() - Reiniciamos valores al comienzo de cada partida
+    // --------------------------------------------------------------------------------------------
 
-    public void reiniciaPartida(){
-        puntosAcumulados=0;
-        fallos=0;
+    public void iniciaContadores() {
+        puntosAcumulados = 0;
+        fallos = 0;
     }
 
 }

@@ -13,7 +13,10 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        //Vamos a esperar 3 segundos y automaticamente que salte a la pantalla MainActivity:
+        // -----------------------------------------------------------------------------------------
+        // Esperamos 3 segundos y automaticamente saltamos a la pantalla MainActivity
+        // -----------------------------------------------------------------------------------------
+
         Handler retardo = new Handler();
         retardo.postDelayed(new Runnable() {
             @Override

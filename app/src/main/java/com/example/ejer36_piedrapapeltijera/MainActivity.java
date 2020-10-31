@@ -11,22 +11,50 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    // Declaramos un objeto de la clase JGame
+
     private JGame game;
+
+    /**********************************************************************************************
+     onCreate
+     **********************************************************************************************/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageButton btnJugar = findViewById(R.id.btnJugar);
-        TextView tvPuntos = findViewById(R.id.tvPuntos);
+    /**********************************************************************************************
+     Objetos de la clase
+     **********************************************************************************************/
+
+        // -----------------------------------------------------------------------------------------
+        // Instanciamos el objeto game de la clase JGame
+        // -----------------------------------------------------------------------------------------
+
         game = new JGame();
 
-        //Cuando arranca la app, leo de las preferencias a ver si tengo guardado un record:
+        // -----------------------------------------------------------------------------------------
+        // Enlazamos con la vista
+        // -----------------------------------------------------------------------------------------
+
+        ImageButton btnJugar = findViewById(R.id.btnJugar);
+        TextView tvPuntos = findViewById(R.id.tvPuntos);
+
+        // -----------------------------------------------------------------------------------------
+        // Si hay record en las Sharedpreferences, lo leemos y se lo pasamos al atributo record de la clase JGame
+        // -----------------------------------------------------------------------------------------
+
         SharedPreferences records = MainActivity.this.getSharedPreferences("Datos", 0);
-        //record_puntos = taquilla.getInt("record_puntos",0);
         game.setRecordPuntos(records.getInt("record_puntos", 0));
+
+        // Mostramos en pantalla el record almacenado en las Sharereferences
+
         tvPuntos.setText(String.format(getString(R.string.tv_puntos_record), game.getRecord()));
+
+        // -----------------------------------------------------------------------------------------
+        // Programamos el click en el botón para lanzar JuegoActivity e iniciar la partida
+        // -----------------------------------------------------------------------------------------
 
         btnJugar.setOnClickListener(new View.OnClickListener() {
             @Override
