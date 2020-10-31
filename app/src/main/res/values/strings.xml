@@ -11,7 +11,7 @@
     <string name="btn_publi">Visitanos!!</string>
     <string name="tv_fallos">Ya has fallado %d veces</string>
     <string name="tv_puntos_acumulados">Llevas %d puntos en esta partida</string>
-    <string name="tv_nuevo_record">%d ¡¡nuevo record!!</string>
+    <string name="tv_nuevo_record">%d puntos ¡¡nuevo record!!</string>
     <string name="tv_resultado">%s</string>
     <string name="tv_elige">Elige piedra, papel o tijera</string>
 
