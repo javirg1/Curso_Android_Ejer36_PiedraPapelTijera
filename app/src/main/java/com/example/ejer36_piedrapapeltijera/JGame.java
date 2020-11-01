@@ -15,7 +15,7 @@ public class JGame {
     private int record_puntos;
     private String imagenFile;
     private String resultado;
-    private String sonido;
+    private int sonido;
 
     /**********************************************************************************************
      Propiedades
@@ -39,6 +39,10 @@ public class JGame {
 
     public int getRecord() {
         return record_puntos;
+    }
+
+    public int getSonido(){
+        return sonido;
     }
 
     public void setRecordPuntos(int valor) {
@@ -84,8 +88,7 @@ public class JGame {
 
         // Gestionamos el empate
         if (eleccion == num_aleatorio) {
-            puntosAcumulados = puntosAcumulados + 1;
-            resultado = "Empate";
+            empataUsuario();
         // Si no hay empate, gestionamos quién gana o pierde
         } else {
             switch (eleccion) {
@@ -116,12 +119,24 @@ public class JGame {
     }
 
     // --------------------------------------------------------------------------------------------
+    // empataUsuario() - Gestionamos que sucede cuando el usuario empata la jugada
+    // --------------------------------------------------------------------------------------------
+
+    public int empataUsuario(){
+        puntosAcumulados = puntosAcumulados + 1;
+        resultado = "Empate";
+        sonido=0;
+        return puntosAcumulados;
+    }
+
+    // --------------------------------------------------------------------------------------------
     // ganaUsuario() - Gestionamos que sucede cuando el usuario gana la jugada
     // --------------------------------------------------------------------------------------------
 
     public int ganaUsuario() {
         puntosAcumulados = puntosAcumulados + 3;
         resultado = "Victoria!";
+        sonido=2;
         return puntosAcumulados;
     }
 
@@ -132,6 +147,7 @@ public class JGame {
     public int pierdeUsuario() {
         fallos++;
         resultado = "Derrota";
+        sonido=1;
         return fallos;
     }
 

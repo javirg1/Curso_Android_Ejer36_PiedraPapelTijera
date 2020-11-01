@@ -104,7 +104,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/tv_record"
-            android:textColor="@color/design_default_color_secondary"
+            android:textColor="@color/design_default_color_surface"
             android:textSize="20sp" />
 
         <TextView
@@ -113,20 +113,20 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/tv_puntos_record"
-            android:textColor="@color/teal_700"
+            android:textColor="@color/design_default_color_surface"
             android:textSize="30sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="122dp"
-        android:gravity="center_horizontal"
+        android:layout_height="145dp"
+        android:gravity="bottom|center_horizontal"
         android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/btnJugar"
             android:layout_width="85dp"
-            android:layout_height="wrap_content"
+            android:layout_height="78dp"
             android:layout_marginTop="30dp"
             android:background="@null"
             app:srcCompat="@drawable/btn_jugar" />

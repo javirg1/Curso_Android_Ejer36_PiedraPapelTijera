@@ -57,6 +57,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp">
 
         <ImageView
@@ -114,7 +115,7 @@
             android:id="@+id/tvPuntosAcumulados"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="0dp"
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="@string/tv_puntos_acumulados"
@@ -125,17 +126,25 @@
             android:id="@+id/tvNuevoRecord"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="@string/tv_nuevo_record"
             android:textColor="#e0db38"
             android:textSize="20sp" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_horizontal|center_vertical">
+
         <ImageButton
             android:id="@+id/btnNuevaPartida"
             android:layout_width="85dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
             android:layout_weight="1"
             android:background="@null"
             app:srcCompat="@drawable/btn_replay" />

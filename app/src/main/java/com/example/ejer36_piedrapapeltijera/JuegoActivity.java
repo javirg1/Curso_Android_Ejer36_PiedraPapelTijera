@@ -2,6 +2,7 @@ package com.example.ejer36_piedrapapeltijera;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -25,6 +26,9 @@ public class JuegoActivity extends AppCompatActivity {
         // Si todavía no hemos perdido tres veces (3 fallos acumulados)
 
         if (game.getFallos()<3){
+            // Sonido cuando el usurio selecciona una opción
+            MediaPlayer jugadaPlayer = MediaPlayer.create(JuegoActivity.this, R.raw.sound_seleccion);
+            jugadaPlayer.start();
             // Creamos la jugada aleatoria de la app llamando al método del objeto de la clase JGame
             game.jugadorAleatorio();
             // Gestionamos el string que devuelve y lo convertimos en el número de id del recurso
@@ -35,7 +39,9 @@ public class JuegoActivity extends AppCompatActivity {
             int usuarioEleccion = uEleccion;
             // Comparamos la jugada del usuario con la jugada aleatoria
             game.comparaJugada(usuarioEleccion);
-            // Mostramos en pantallalos puntos acumulados
+            // Emitimos el sonido correspondiente a empate, victoria o fallo
+            sonido();
+            // Mostramos en pantalla los puntos acumulados
             String puntos = String.format(getString(R.string.tv_puntos_acumulados),game.getPuntosAcumulados());
             tvPuntosAcumulados.setText(puntos);
             // Mostramos en pantalla el resultado de la jugada (Empate / Victoria / Derrota
@@ -49,8 +55,11 @@ public class JuegoActivity extends AppCompatActivity {
 
         }else{
 
-            // Desabilitamos las imágenes para que el usuario no siga jugando
+            // Sonido cuando se acuulan tres fallos
+            MediaPlayer finalPlayer = MediaPlayer.create(JuegoActivity.this, R.raw.sound_final_partida);
+            finalPlayer.start();
 
+            // Desabilitamos las imágenes para que el usuario no siga jugando
             imgPiedra.setEnabled(false);
             imgPapel.setEnabled(false);
             imgTijera.setEnabled(false);
@@ -109,6 +118,28 @@ public class JuegoActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = records.edit();
         editor.putInt("record_puntos", game.getRecord());
         editor.apply(); //Equivalente a editor.commit();
+    }
+
+    // --------------------------------------------------------------------------------------------
+    // sonido() - Emite un sonido cuando el usuari empata, gana o pierde
+    // --------------------------------------------------------------------------------------------
+
+    private void sonido(){
+        int sound=game.getSonido();
+        switch (sound){
+            case 0:
+                MediaPlayer falloPlayer = MediaPlayer.create(JuegoActivity.this, R.raw.sound_empate);
+                falloPlayer.start();
+                break;
+            case 1:
+                MediaPlayer pierdePlayer = MediaPlayer.create(JuegoActivity.this, R.raw.sound_fallo);
+                pierdePlayer.start();
+                break;
+            case 2:
+                MediaPlayer ganaPlayer = MediaPlayer.create(JuegoActivity.this, R.raw.sound_victoria);
+                ganaPlayer.start();
+                break;
+        }
     }
 
     /**********************************************************************************************
