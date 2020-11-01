@@ -60,7 +60,7 @@ public class JGame {
     public String jugadorAleatorio() {
         // Genero un número aleatorio entre 0 y 2
         Random aleatorio = new Random();
-        num_aleatorio = aleatorio.nextInt(3) + 0;
+        num_aleatorio = aleatorio.nextInt(3); // Igual que num_aleatorio = aleatorio.nextInt(3) + 0
         // Dependiendo del número aleatorio cargaremos una imagen u otra
         switch (num_aleatorio) {
             case 0:
@@ -84,7 +84,7 @@ public class JGame {
 
         // 0 - Piedra (rock)
         // 1 - Papel (paper)
-        // 2 - Tijera (tijera)
+        // 2 - Tijera (scissor)
 
         // Gestionamos el empate
         if (eleccion == num_aleatorio) {

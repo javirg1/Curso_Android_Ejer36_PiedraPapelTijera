@@ -35,10 +35,8 @@ public class JuegoActivity extends AppCompatActivity {
             String txt = game.getImagenAleatoria();
             int resId = getResources().getIdentifier(txt, "drawable", getPackageName());
             imgAleatoria.setImageResource(resId);
-            // Declaramos la variable que contiene la elección del usuario
-            int usuarioEleccion = uEleccion;
             // Comparamos la jugada del usuario con la jugada aleatoria
-            game.comparaJugada(usuarioEleccion);
+            game.comparaJugada(uEleccion);
             // Emitimos el sonido correspondiente a empate, victoria o fallo
             sonido();
             // Mostramos en pantalla los puntos acumulados
@@ -56,7 +54,7 @@ public class JuegoActivity extends AppCompatActivity {
         }else{
 
             // Sonido cuando se acuulan tres fallos
-            MediaPlayer finalPlayer = MediaPlayer.create(JuegoActivity.this, R.raw.sound_final_partida);
+            MediaPlayer finalPlayer = MediaPlayer.create(JuegoActivity.this, R.raw.sound_final);
             finalPlayer.start();
 
             // Desabilitamos las imágenes para que el usuario no siga jugando
@@ -67,8 +65,8 @@ public class JuegoActivity extends AppCompatActivity {
 
         // Comprobamos si hay nuevo record y lo mostramos
         if (game.nuevoRecord()){
-            tvNuevoRecord.setText(String.format(getString(R.string.tv_nuevo_record), game.getRecord()));
             grabarRecord();
+            tvNuevoRecord.setText(String.format(getString(R.string.tv_nuevo_record), game.getRecord()));
         }
     }
 
