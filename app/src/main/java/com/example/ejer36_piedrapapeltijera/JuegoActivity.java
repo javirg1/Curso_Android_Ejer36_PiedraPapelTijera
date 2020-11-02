@@ -1,6 +1,6 @@
 package com.example.ejer36_piedrapapeltijera;
 
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class JuegoActivity extends AppCompatActivity {
@@ -251,12 +252,30 @@ public class JuegoActivity extends AppCompatActivity {
     // Automaticamente saltamos a la pantalla PubliActivity
     // ---------------------------------------------------------------------------------------------
 
-    @Override
+    /*@Override
     protected void onDestroy() {
         super.onDestroy();
 
         Intent nueva_pantalla = new Intent(JuegoActivity.this, PubliActivity.class);
         startActivity(nueva_pantalla);
         finish();
+    }*/
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle(R.string.app_title)
+                .setMessage("Are you sure you want to close this activity?")
+                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+
+                })
+                .setNegativeButton(android.R.string.no, null)
+                .show();
     }
 }
